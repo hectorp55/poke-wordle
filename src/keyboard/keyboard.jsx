@@ -6,7 +6,7 @@ const topKeys = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
 const middleKeys = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
 const bottomKeys = ["Z", "X", "C", "V", "B", "N", "M"];
 
-function Keyboard({addLetterToGuess, deleteLetterFromGuess}) {
+function Keyboard({addLetterToGuess, deleteLetterFromGuess, submitGuess}) {
 
     return (
         <div className="keyboard">
@@ -21,7 +21,7 @@ function Keyboard({addLetterToGuess, deleteLetterFromGuess}) {
                 })}
             </div>
             <div className="keyboard-row bottom">
-                <ActionButton actionName="Enter"></ActionButton>
+                <ActionButton actionName="Enter" actionMethod={submitGuess}></ActionButton>
                 {bottomKeys.map((key) => {
                     return <LetterInput key={key} letter={key} onLetterClicked={addLetterToGuess}></LetterInput>
                 })}
