@@ -1,8 +1,8 @@
-import './letter-input.css'
+import './letter-input.css';
 
 function LetterInput({ letter }) {
     return (
-        <span className="letter-input">{letter}</span>
+        <span className="letter-input input-button">{letter}</span>
     )
 }
 

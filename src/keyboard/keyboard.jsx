@@ -1,7 +1,7 @@
 import './keyboard.css'
+import './button.css';
 import LetterInput from './letter-input/letter-input.jsx';
-
-const keys = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"];
+import ActionButton from './action-button/action-button.jsx';
 
 const topKeys = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
 const middleKeys = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
@@ -20,10 +20,12 @@ function Keyboard() {
                     return <LetterInput key={key} letter={key}></LetterInput>
                 })}
             </div>
-             <div class="keyboard-row bottom">
+            <div class="keyboard-row bottom">
+                <ActionButton action="Enter"></ActionButton>
                 {bottomKeys.map((key) => {
                     return <LetterInput key={key} letter={key}></LetterInput>
                 })}
+                <ActionButton action="Delete"></ActionButton>
             </div>
         </div>
     )
