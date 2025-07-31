@@ -1,9 +1,9 @@
 import './letter-box.css';
 
-function LetterBox() {
+function LetterBox({guessLetter}) {
     return (
-        <div class="letter-box">
-            <span class="letter">H</span>
+        <div className="letter-box">
+            <span className="letter">{guessLetter}</span>
         </div>
     )
 }

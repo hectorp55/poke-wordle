@@ -1,8 +1,13 @@
 import './letter-input.css';
 
-function LetterInput({ letter }) {
+function LetterInput({ letter, onLetterClicked }) {
+
+    function onClick() {
+        onLetterClicked(letter);
+    }
+
     return (
-        <span className="letter-input input-button">{letter}</span>
+        <span className="letter-input input-button" onClick={onClick}>{letter}</span>
     )
 }
 

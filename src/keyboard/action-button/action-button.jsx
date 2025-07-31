@@ -1,9 +1,13 @@
 import './action-button.css'
 
-function ActionButton({ action }) {
+function ActionButton({ actionName, actionMethod }) {
+    function onClick() {
+        actionMethod();
+    }
+
     return (
-        <span class="action-button input-button">
-            {action}
+        <span className="action-button input-button" onClick={onClick}>
+            {actionName}
         </span>
     )
 }

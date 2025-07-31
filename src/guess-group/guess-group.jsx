@@ -1,14 +1,17 @@
 import './guess-group.css';
 import LetterBox from './letter-box/letter-box';
 
-function GuessGroup() {
+function GuessGroup({ guess, guessCount, letterCount }) {
+    const letterCounts = Array.from({ length: letterCount }, (_, i) => i + 1)
+
     return (
-        <div class="guess-group">
-            <LetterBox></LetterBox>
-            <LetterBox></LetterBox>
-            <LetterBox></LetterBox>
-            <LetterBox></LetterBox>
-            <LetterBox></LetterBox>
+        <div className="guess-group">
+            {letterCounts.map((letterCount, index) => {
+                return <LetterBox 
+                            key={"row" + index + "column" + guessCount } 
+                            guessLetter={guess.length >= letterCount + 1 ? guess[letterCount] : ""}
+                        ></LetterBox>
+            })}
         </div>
     )
 }

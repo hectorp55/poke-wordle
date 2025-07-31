@@ -4,9 +4,9 @@ function Header() {
 
   return (
     <>
-      <nav class="nav-bar">
+      <nav className="nav-bar">
         <span>Help</span>
-        <h1 class="title">Poke Wordle</h1>
+        <h1 className="title">Poke Wordle</h1>
         <span>Settings</span>
       </nav>
       <hr></hr>

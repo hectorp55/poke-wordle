@@ -1,5 +1,4 @@
 import './keyboard.css'
-import './button.css';
 import LetterInput from './letter-input/letter-input.jsx';
 import ActionButton from './action-button/action-button.jsx';
 
@@ -7,25 +6,26 @@ const topKeys = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
 const middleKeys = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
 const bottomKeys = ["Z", "X", "C", "V", "B", "N", "M"];
 
-function Keyboard() {
+function Keyboard({addLetterToGuess, deleteLetterFromGuess}) {
+
     return (
-        <div class="keyboard">
-            <div class="keyboard-row top">
+        <div className="keyboard">
+            <div className="keyboard-row top">
                 {topKeys.map((key) => {
-                    return <LetterInput key={key} letter={key}></LetterInput>
+                    return <LetterInput key={key} letter={key} onLetterClicked={addLetterToGuess}></LetterInput>
                 })}
             </div>
-             <div class="keyboard-row middle">
+             <div className="keyboard-row middle">
                 {middleKeys.map((key) => {
-                    return <LetterInput key={key} letter={key}></LetterInput>
+                    return <LetterInput key={key} letter={key} onLetterClicked={addLetterToGuess}></LetterInput>
                 })}
             </div>
-            <div class="keyboard-row bottom">
-                <ActionButton action="Enter"></ActionButton>
+            <div className="keyboard-row bottom">
+                <ActionButton actionName="Enter"></ActionButton>
                 {bottomKeys.map((key) => {
-                    return <LetterInput key={key} letter={key}></LetterInput>
+                    return <LetterInput key={key} letter={key} onLetterClicked={addLetterToGuess}></LetterInput>
                 })}
-                <ActionButton action="Delete"></ActionButton>
+                <ActionButton actionName="Delete" actionMethod={deleteLetterFromGuess}></ActionButton>
             </div>
         </div>
     )

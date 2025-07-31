@@ -4,3 +4,4 @@
 
 ### TODO
 dont let people highltight text
+icons
