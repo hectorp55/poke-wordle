@@ -1,0 +1,11 @@
+.keyboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.keyboard-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
