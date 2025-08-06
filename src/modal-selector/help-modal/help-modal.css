@@ -3,3 +3,7 @@
     align-content: center;
     flex-direction: column;
 }
+
+.loading-image {
+    width: 250px;
+}

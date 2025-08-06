@@ -37,7 +37,7 @@ function App() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalSelector, setModalSelector] = useState("");
 
-  if (isLoading) return <div>Loading...</div>; // TODO: make this pretty
+  if (isLoading) return <div><img src="public/poke-loading.gif"></img></div>; // TODO: make this pretty
   if (isError) return <div>{error.toString()}</div>; // TODO: make this pretty
 
   console.log(data);
@@ -88,7 +88,6 @@ function App() {
   function gatherColorLetter(guess: string, answer: string) {
     for (let i = 0; i < guess.length; i++) {
       const letter = guess[i];
-      console.log(letter)
       const letterColor = getLetterColorWithIndex(guess, answer, i);
       switch (letterColor) {
           case "green":
@@ -130,9 +129,6 @@ function App() {
     setGreyLetters([]);
     refetch();
   }
-
-  console.log(greenLetters)
-
   return (
     <>
       <Header openSettings={openSettings} openHelp={openHelp}></Header>
