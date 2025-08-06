@@ -1,4 +1,6 @@
-import './action-button.css'
+import './action-button.css';
+import { FaDeleteLeft } from "react-icons/fa6";
+import { AiOutlineEnter } from "react-icons/ai";
 
 function ActionButton({ actionName, actionMethod }) {
     function onClick() {
@@ -7,7 +9,8 @@ function ActionButton({ actionName, actionMethod }) {
 
     return (
         <span className="action-button input-button" onClick={onClick}>
-            {actionName}
+            {actionName === "Enter" && <AiOutlineEnter/>}
+            {actionName === "Delete" && <FaDeleteLeft/>}
         </span>
     )
 }
