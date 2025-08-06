@@ -1,13 +1,13 @@
 import './header.css'
 
-function Header() {
+function Header({openSettings, openHelp}) {
 
   return (
     <>
       <nav className="nav-bar">
-        <span>Help</span>
+        <button onClick={openHelp}>Help</button>
         <h1 className="title">Poke Wordle</h1>
-        <span>Settings</span>
+        <button onClick={openSettings}>Settings</button>
       </nav>
       <hr></hr>
     </>

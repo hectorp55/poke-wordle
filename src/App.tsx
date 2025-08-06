@@ -3,15 +3,30 @@ import './App.css';
 import Header from './header/header.jsx';
 import GuessGroup from './guess-group/guess-group.jsx';
 import Keyboard from './keyboard/keyboard.jsx';
+import Modal from 'react-modal';
 import { useState } from 'react';
 import { getPokemonNames } from './hooks/fetchPokemonNames.jsx';
 import { getLetterColorWithIndex } from './hooks/letterChecks.jsx'; 
+import ModalSelector from './modal-selector/modal-selector.jsx';
 
 const LETTER_COUNT = 5;
 const GUESS_COUNT = 6;
 
+const customModalStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+Modal.setAppElement('#root');
+
 function App() {
-  const { data, isLoading, isError, error } = getPokemonNames();
+  const { data, isLoading, isError, error, refetch } = getPokemonNames();
   
   const [submittedGuesses, setSubmittedGuesses] = useState(["", "", "", "", "", ""]); //TODO: make this dynamic
   const [guess, setGuess] = useState("");
@@ -19,6 +34,8 @@ function App() {
   const [yellowLetters, setYellowLetters] = useState<string[]>([]);
   const [greenLetters, setGreenLetters] = useState<string[]>([]);
   const [greyLetters, setGreyLetters] = useState<string[]>([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalSelector, setModalSelector] = useState("");
 
   if (isLoading) return <div>Loading...</div>; // TODO: make this pretty
   if (isError) return <div>{error.toString()}</div>; // TODO: make this pretty
@@ -57,8 +74,8 @@ function App() {
       if (guess.length == LETTER_COUNT) {
         gatherColorLetter(guess, data.randomPokemon);
         if (guess == data.randomPokemon) {
-          // TODO: gameover
-          console.log("WINNER!");
+          setModalSelector("WinModal");
+          openModal();
         }
         
         setGuess("");
@@ -86,9 +103,39 @@ function App() {
     }
   }
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openHelp() {
+    setModalSelector("HelpModal");
+    openModal();
+  }
+
+  function openSettings() {
+    setModalSelector("SettingsModal");
+    openModal();
+  }
+
+  function resetGame() {
+    setSubmittedGuesses(["", "", "", "", "", ""]); //TODO: make this dynamic
+    setGuess("");
+    setGuessCount(0);
+    setYellowLetters([]);
+    setGreenLetters([]);
+    setGreyLetters([]);
+    refetch();
+  }
+
+  console.log(greenLetters)
+
   return (
     <>
-      <Header></Header>
+      <Header openSettings={openSettings} openHelp={openHelp}></Header>
       <div className="body">
         <main className="main">
           {Array.from({length: GUESS_COUNT}).map((_, index) => {
@@ -114,6 +161,13 @@ function App() {
             >
           </Keyboard>
         </aside>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customModalStyles}
+        >
+          <ModalSelector closeModal={closeModal} selector={modalSelector} resetGame={resetGame}></ModalSelector>
+        </Modal>
       </div>
     </>
   )
