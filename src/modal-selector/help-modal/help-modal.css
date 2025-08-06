@@ -1,0 +1,5 @@
+.help-modal-content {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}

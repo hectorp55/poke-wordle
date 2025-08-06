@@ -2,7 +2,7 @@ import WinModal from "./win-modal/win-modal.jsx";
 import SettingsModal from "./settings-modal/settings-modal.jsx";
 import HelpModal from "./help-modal/help-modal.jsx";
 
-function ModalSelector({selector, closeModal, resetGame}) {
+function ModalSelector({selector, closeModal, resetGame, pokemonName}) {
     
     switch(selector) {
         case "WinModal":
@@ -10,7 +10,7 @@ function ModalSelector({selector, closeModal, resetGame}) {
         case "SettingsModal":
             return <SettingsModal closeModal={closeModal}></SettingsModal>
         case "HelpModal":
-            return <HelpModal closeModal={closeModal}></HelpModal>
+            return <HelpModal closeModal={closeModal} pokemonName={pokemonName}></HelpModal>
         default: 
             return <div>Modal</div>
     }

@@ -166,7 +166,7 @@ function App() {
           onRequestClose={closeModal}
           style={customModalStyles}
         >
-          <ModalSelector closeModal={closeModal} selector={modalSelector} resetGame={resetGame}></ModalSelector>
+          <ModalSelector closeModal={closeModal} selector={modalSelector} resetGame={resetGame} pokemonName={data.randomPokemon}></ModalSelector>
         </Modal>
       </div>
     </>
