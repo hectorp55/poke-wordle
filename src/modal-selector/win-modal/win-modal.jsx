@@ -7,7 +7,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 function WinModal({closeModal, resetGame, pokemonName}) {
     const { data, isLoading, isError, error } = getPokemonSprite(pokemonName);
     
-    if (isLoading) return <div><img className="loading-image" src="public/poke-loading.gif"></img></div>
+    if (isLoading) return <div><img className="loading-image" src="/poke-loading.gif"></img></div>
 
     function playAgain() {
         resetGame();

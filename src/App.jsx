@@ -27,22 +27,22 @@ const customModalStyles = {
 Modal.setAppElement('#root');
 
 function App() {
-  const { data, isLoading, isError, error, refetch } = getPokemonNames();
+  const { data, isLoading, isError, refetch } = getPokemonNames();
   
   const [submittedGuesses, setSubmittedGuesses] = useState(["", "", "", "", "", ""]); //TODO: make this dynamic
   const [guess, setGuess] = useState("");
   const [guessCount, setGuessCount] = useState(0);
-  const [yellowLetters, setYellowLetters] = useState<string[]>([]);
-  const [greenLetters, setGreenLetters] = useState<string[]>([]);
-  const [greyLetters, setGreyLetters] = useState<string[]>([]);
+  const [yellowLetters, setYellowLetters] = useState([]);
+  const [greenLetters, setGreenLetters] = useState([]);
+  const [greyLetters, setGreyLetters] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalSelector, setModalSelector] = useState("");
   const [isNotValid, setisNotValid] = useState(false);
 
-  if (isLoading) return <div><img src="public/poke-loading.gif"></img></div>;
-  if (isError) return <div><img src="public/pikachu-error.gif"></img></div>;
+  if (isLoading) return <div><img src="/poke-loading.gif"></img></div>;
+  if (isError) return <div><img src="/pikachu-error.gif"></img></div>;
 
-  function addLetterToGuess(char: string) {
+  function addLetterToGuess(char) {
     if (guess.length <= LETTER_COUNT) {
       setGuess(guess.concat(char));
     }
@@ -54,7 +54,7 @@ function App() {
     }
   }
 
-  function updateGuessesList(guess: string, index: number) {
+  function updateGuessesList(guess, index) {
     const updatedGuesses = submittedGuesses.map((g, i) => {
       if (i === index) {
         // Update the current guess
@@ -86,7 +86,7 @@ function App() {
     }  
   }
 
-  function gatherColorLetter(guess: string, answer: string) {
+  function gatherColorLetter(guess, answer) {
     for (let i = 0; i < guess.length; i++) {
       const letter = guess[i];
       const letterColor = getLetterColorWithIndex(guess, answer, i);

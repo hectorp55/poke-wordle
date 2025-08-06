@@ -5,7 +5,7 @@ import './help-modal.css';
 function HelpModal({pokemonName}) {
     const { data, isLoading, isError, error } = getPokemonSprite(pokemonName);
 
-    if (isLoading) return <div><img className="loading-image" src="public/poke-loading.gif"></img></div>
+    if (isLoading) return <div><img className="loading-image" src="/poke-loading.gif"></img></div>
 
     return (
         <div class="help-modal-content">
