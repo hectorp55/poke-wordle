@@ -37,6 +37,7 @@ function App() {
   const [greyLetters, setGreyLetters] = useState<string[]>([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalSelector, setModalSelector] = useState("");
+  const [isNotValid, setisNotValid] = useState(false);
 
   if (isLoading) return <div><img src="public/poke-loading.gif"></img></div>;
   if (isError) return <div><img src="public/pikachu-error.gif"></img></div>;
@@ -70,8 +71,7 @@ function App() {
 
   function submitGuess() {
     if (guess in data.pokemon) {
-      console.log("Valid Guess")
-      // TODO: alert that guess is not a pokemon
+      setisNotValid(false);
       if (guess.length == LETTER_COUNT) {
         gatherColorLetter(guess, data.randomPokemon);
         if (guess == data.randomPokemon) {
@@ -83,7 +83,9 @@ function App() {
         setGuessCount(guessCount + 1);
         updateGuessesList(guess, guessCount);
       }
-    }    
+    } else {
+      setisNotValid(true);
+    }  
   }
 
   function gatherColorLetter(guess: string, answer: string) {
@@ -157,6 +159,7 @@ function App() {
             greyLetters={greyLetters}
             >
           </Keyboard>
+          {isNotValid && <div className="invalid-message"> Not a Pokemon, try again.</div>}
         </aside>
         <Modal
           isOpen={modalIsOpen}

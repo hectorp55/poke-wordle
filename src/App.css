@@ -25,7 +25,15 @@
 
 .aside {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 80%;
+}
+
+.invalid-message {
+  margin: 5px;
+  padding: 10px;
+  border: solid 1px;
+  background-color: rgb(148, 148, 148);
 }
