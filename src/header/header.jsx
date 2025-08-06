@@ -1,13 +1,17 @@
 import './header.css'
+import { IoMdSettings } from "react-icons/io";
+import { FaRegQuestionCircle } from "react-icons/fa";
+
 
 function Header({openSettings, openHelp}) {
 
   return (
     <>
       <nav className="nav-bar">
-        <button onClick={openHelp}>Help</button>
+        <FaRegQuestionCircle onClick={openHelp} className="icon"/>
         <h1 className="title">Poke Wordle</h1>
-        <button onClick={openSettings}>Settings</button>
+        <IoMdSettings onClick={openSettings} className="icon"/>
+        
       </nav>
       <hr></hr>
     </>

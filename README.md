@@ -1,8 +1,6 @@
 # Poke Worlde
 
-## Example React project 
+## Example React project using Pokemon API v2
 
 ### TODO
-dont let people highltight text
-icons
 settings for word and guess counts
