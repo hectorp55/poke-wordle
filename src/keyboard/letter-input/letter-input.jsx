@@ -1,13 +1,18 @@
 import './letter-input.css';
 
-function LetterInput({ letter, onLetterClicked }) {
-
+function LetterInput({ letter, onLetterClicked, bgColor }) {
     function onClick() {
         onLetterClicked(letter);
     }
 
     return (
-        <span className="letter-input input-button" onClick={onClick}>{letter}</span>
+        <button 
+            className="letter-input input-button" 
+            onClick={onClick}
+            style={{backgroundColor: bgColor}}
+            >
+            {letter}
+        </button>
     )
 }
 

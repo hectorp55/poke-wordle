@@ -1,9 +1,13 @@
 import './letter-box.css';
+import { getLetterColor } from './../../hooks/letterChecks.jsx'; 
 
-function LetterBox({guessLetter}) {
+function LetterBox({guessLetter, answerLetter, answer, isSubmitted}) {
     return (
         <div className="letter-box">
-            <span className="letter">{guessLetter}</span>
+            <button 
+                className="letter"
+                style={{backgroundColor: isSubmitted ? getLetterColor(guessLetter, answerLetter, answer) : "white"}}
+            >{guessLetter}</button>
         </div>
     )
 }
