@@ -42,8 +42,6 @@ function App() {
   if (isLoading) return <div><img src="public/poke-loading.gif"></img></div>;
   if (isError) return <div><img src="public/pikachu-error.gif"></img></div>;
 
-  console.log(data);
-
   function addLetterToGuess(char: string) {
     if (guess.length <= LETTER_COUNT) {
       setGuess(guess.concat(char));
