@@ -1,11 +1,13 @@
+import { GREEN, YELLOW, GREY } from './../constants';
+
 export function getLetterColor(guessLetter, answerLetter, answer) {
     if (guessLetter === answerLetter) {
-        return "green";
+        return GREEN;
     }
     if (answer.includes(guessLetter)) {
-        return "yellow";
+        return YELLOW;
     }
-    return "grey";
+    return GREY;
 }
 
 export function getLetterColorWithIndex(guess, answer, index) {

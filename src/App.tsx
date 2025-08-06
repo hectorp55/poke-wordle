@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { getPokemonNames } from './hooks/fetchPokemonNames.jsx';
 import { getLetterColorWithIndex } from './hooks/letterChecks.jsx'; 
 import ModalSelector from './modal-selector/modal-selector.jsx';
+import { GREEN, YELLOW } from './constants.jsx';
 
 const LETTER_COUNT = 5;
 const GUESS_COUNT = 6;
@@ -90,10 +91,10 @@ function App() {
       const letter = guess[i];
       const letterColor = getLetterColorWithIndex(guess, answer, i);
       switch (letterColor) {
-          case "green":
+          case GREEN:
             setGreenLetters(greenLetters => [...greenLetters, letter]);
             break;
-          case "yellow":
+          case YELLOW:
             setYellowLetters(yellowLetters => [...yellowLetters, letter]);
             break;
           default:

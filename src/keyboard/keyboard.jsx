@@ -1,7 +1,7 @@
 import './keyboard.css'
 import LetterInput from './letter-input/letter-input.jsx';
 import ActionButton from './action-button/action-button.jsx';
-import { useEffect } from 'react';
+import { GREEN, YELLOW, GREY } from './../constants.jsx';
 
 const topKeys = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
 const middleKeys = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
@@ -10,13 +10,13 @@ const bottomKeys = ["Z", "X", "C", "V", "B", "N", "M"];
 function Keyboard({addLetterToGuess, deleteLetterFromGuess, submitGuess, greenLetters, yellowLetters, greyLetters}) {
     function getColor(letter) {
         if (greenLetters.includes(letter)) {
-            return "green"
+            return GREEN
         }
         if (yellowLetters.includes(letter)) {
-            return "yellow"
+            return YELLOW
         }
         if (greyLetters.includes(letter)) {
-            return "grey"
+            return GREY
         }
         return "light grey"
     }
