@@ -1,16 +1,28 @@
-function WinModal({closeModal, resetGame}) {
+import './win-modal.css';
+import { getPokemonSprite } from "../../hooks/fetchPokemonSprite";
+import { IoRefresh } from "react-icons/io5";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+
+
+function WinModal({closeModal, resetGame, pokemonName}) {
+    const { data, isLoading, isError, error } = getPokemonSprite(pokemonName);
+    
+    if (isLoading) return <div><img className="loading-image" src="public/poke-loading.gif"></img></div>
+
     function playAgain() {
         resetGame();
         closeModal();
     }
     
     return (
-        <>
-            <button onClick={closeModal}>Close Button</button>
+        <main className="win-content">
             <h2>Winner!</h2>
-            <div>TODO: pokemon sprite</div>
-            <button onClick={playAgain}>Play Again?</button>
-        </>
+            <div>{!isLoading && <img src={data.front_default}></img>}</div>
+            <div className="options">
+                <IoRefresh onClick={playAgain} className="icon"/>
+                <IoIosCloseCircleOutline onClick={closeModal} className="icon"/>
+            </div>
+        </main>
     )
 }
 

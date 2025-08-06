@@ -6,7 +6,7 @@ function ModalSelector({selector, closeModal, resetGame, pokemonName}) {
     
     switch(selector) {
         case "WinModal":
-            return <WinModal closeModal={closeModal} resetGame={resetGame}></WinModal>
+            return <WinModal closeModal={closeModal} resetGame={resetGame} pokemonName={pokemonName}></WinModal>
         case "SettingsModal":
             return <SettingsModal closeModal={closeModal}></SettingsModal>
         case "HelpModal":
