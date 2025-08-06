@@ -37,8 +37,8 @@ function App() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalSelector, setModalSelector] = useState("");
 
-  if (isLoading) return <div><img src="public/poke-loading.gif"></img></div>; // TODO: make this pretty
-  if (isError) return <div>{error.toString()}</div>; // TODO: make this pretty
+  if (isLoading) return <div><img src="public/poke-loading.gif"></img></div>;
+  if (isError) return <div><img src="public/pikachu-error.gif"></img></div>;
 
   console.log(data);
 
